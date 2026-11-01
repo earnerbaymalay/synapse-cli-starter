@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Standalone CLI executable for Synapse Custom Functions
+set -euo pipefail
+
+SYNAPSE_CLI_HOME="$(cd "$(dirname "$(realpath "$0")")/.." && pwd)"
+export SYNAPSE_CLI_HOME
+
+# shellcheck disable=SC1091
+source "$SYNAPSE_CLI_HOME/lib/core.sh"
+# shellcheck disable=SC1091
+source "$SYNAPSE_CLI_HOME/lib/fn.sh"
+
+syn-fn "$@"
